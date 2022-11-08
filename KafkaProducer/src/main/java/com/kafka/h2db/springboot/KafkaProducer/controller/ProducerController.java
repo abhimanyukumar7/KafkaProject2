@@ -19,7 +19,8 @@ public class ProducerController {
     }
 
     @PostMapping("send")
-    public void send(@RequestBody User user){
+    public User send(@RequestBody User user){
         topicsProducer.send(user.toString());
+        return user;
     }
 }

@@ -16,14 +16,14 @@ public class TopicConsumer {
 
     private String payloadValue;
 
-    @KafkaListener(topics = "${topic.name.consumer}", groupId = "${spring.kafka.consumer.group-id}")
+    @KafkaListener(topics = "${topic.name.consumer}", groupId = "group_id_consumer")
     public String consume(ConsumerRecord<String, String> payload){
         log.info("Topic Name :- " + topicName);
         log.info("Key :- " + payload.key());
         log.info("Value :- " + payload.value());
         log.info("Headers :- " + payload.headers());
         log.info("Partition :- " + payload.partition());
-        String payloadValue = payload.value();
+        payloadValue = payload.value();
         return payload.value();
     }
 
